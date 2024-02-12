@@ -17,6 +17,7 @@ import com.google.inject.Binder;
 import com.google.inject.Scopes;
 import io.airlift.configuration.AbstractConfigurationAwareModule;
 import io.trino.server.mw.MWClusterStatsResource;
+import io.trino.server.mw.MWUiQueryResource;
 
 import static io.airlift.configuration.ConfigBinder.configBinder;
 import static io.airlift.jaxrs.JaxrsBinder.jaxrsBinder;
@@ -38,6 +39,7 @@ public class WebUiModule
             jaxrsBinder(binder).bind(UiQueryResource.class);
             jaxrsBinder(binder).bind(MWClusterStatsResource.class);
             jaxrsBinder(binder).bind(MWClusterResource.class);
+            jaxrsBinder(binder).bind(MWUiQueryResource.class);
         }
         else {
             binder.bind(WebUiAuthenticationFilter.class).to(DisabledWebUiAuthenticationFilter.class).in(Scopes.SINGLETON);
